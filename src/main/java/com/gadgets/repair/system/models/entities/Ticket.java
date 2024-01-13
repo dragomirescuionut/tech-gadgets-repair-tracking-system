@@ -17,16 +17,23 @@ public class Ticket {
     private Long id;
     @Column(name = "device_type")
     private DeviceType deviceType;
-    @Column(name = "customer")
-    private String customerContactInformation;
     @Column(name = "issue_description")
     private String issueDescription;
     @Column(name = "status")
     private Status status;
-    @Column(name = "date_created")
-    private LocalDate dateCreated;
+    @Column(name = "created_at")
+    private LocalDate created_at;
     @Column(name = "estimated_completion_date")
     private LocalDate estimatedCompletionDate;
-    @OneToMany(mappedBy = "ticket")
-    private List<Assignment> assignments;
+    @Column(name = "completion_date")
+    private LocalDate completionDate;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tickets_technicians",
+            joinColumns = @JoinColumn(name = "ticket_id"),
+            inverseJoinColumns = @JoinColumn(name = "technician_id")
+    )
+    private List<Technician> technicianList;
 }

@@ -12,10 +12,12 @@ public class Technician {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "technician_name")
-    private String technicianName;
-    @Column(name = "contact_information")
-    private String contactInformation;
-    @OneToMany(mappedBy = "technician")
-    private List<Assignment> assignments;
+    @Column(name = "technician_first_name")
+    private String technicianFirstName;
+    @Column(name = "technician_last_name")
+    private String technicianLastName;
+    @Column(name = "technician_email")
+    private String technicianEmail;
+    @ManyToMany(mappedBy = "technicianList")
+    private List<Ticket> ticketList;
 }
