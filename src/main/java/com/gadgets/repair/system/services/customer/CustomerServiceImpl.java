@@ -1,4 +1,4 @@
-package com.gadgets.repair.system.services;
+package com.gadgets.repair.system.services.customer;
 
 import com.gadgets.repair.system.models.dtos.CustomerDTO;
 import com.gadgets.repair.system.models.entities.Customer;
