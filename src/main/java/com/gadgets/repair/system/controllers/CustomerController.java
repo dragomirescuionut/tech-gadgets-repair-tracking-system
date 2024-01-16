@@ -1,7 +1,7 @@
 package com.gadgets.repair.system.controllers;
 
 import com.gadgets.repair.system.models.dtos.CustomerDTO;
-import com.gadgets.repair.system.models.requests.CustomerRequestDTO;
+import com.gadgets.repair.system.models.dtos.requests.CustomerRequestDTO;
 import com.gadgets.repair.system.services.customer.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerRequestDTO customerRequestDTO) {
+    public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerRequestDTO customerRequestDTO) {
         return ResponseEntity.ok(customerService.createCustomer(customerRequestDTO));
     }
 

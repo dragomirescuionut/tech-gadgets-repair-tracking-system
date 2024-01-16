@@ -3,7 +3,7 @@ package com.gadgets.repair.system.services.technician;
 import com.gadgets.repair.system.exceptions.DuplicateResourceException;
 import com.gadgets.repair.system.exceptions.ResourceNotFoundException;
 import com.gadgets.repair.system.models.entities.Technician;
-import com.gadgets.repair.system.models.requests.TechnicianRequestDTO;
+import com.gadgets.repair.system.models.dtos.requests.TechnicianRequestDTO;
 import com.gadgets.repair.system.repositories.TechnicianRepository;
 import org.springframework.stereotype.Service;
 

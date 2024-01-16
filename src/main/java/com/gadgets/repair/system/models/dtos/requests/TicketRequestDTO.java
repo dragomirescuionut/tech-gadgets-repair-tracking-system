@@ -1,4 +1,4 @@
-package com.gadgets.repair.system.models.requests;
+package com.gadgets.repair.system.models.dtos.requests;
 
 import com.gadgets.repair.system.models.DeviceType;
 import com.gadgets.repair.system.models.Status;

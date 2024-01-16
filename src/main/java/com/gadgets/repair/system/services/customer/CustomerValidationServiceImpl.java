@@ -3,7 +3,7 @@ package com.gadgets.repair.system.services.customer;
 import com.gadgets.repair.system.exceptions.ResourceNotFoundException;
 import com.gadgets.repair.system.exceptions.DuplicateResourceException;
 import com.gadgets.repair.system.models.entities.Customer;
-import com.gadgets.repair.system.models.requests.CustomerRequestDTO;
+import com.gadgets.repair.system.models.dtos.requests.CustomerRequestDTO;
 import com.gadgets.repair.system.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,6 @@ public class CustomerValidationServiceImpl implements CustomerValidationService 
     public Customer getValidCustomer(Long customerId) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer with id " + customerId + "not found"));
-
         return customer;
     }
 }
