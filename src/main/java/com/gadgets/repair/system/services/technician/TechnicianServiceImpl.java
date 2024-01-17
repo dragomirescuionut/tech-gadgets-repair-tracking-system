@@ -1,6 +1,6 @@
 package com.gadgets.repair.system.services.technician;
 
-import com.gadgets.repair.system.models.dtos.TechnicianDTO;
+import com.gadgets.repair.system.models.dtos.responses.TechnicianResponseDTO;
 import com.gadgets.repair.system.models.entities.Technician;
 import com.gadgets.repair.system.models.dtos.requests.TechnicianRequestDTO;
 import com.gadgets.repair.system.repositories.TechnicianRepository;
@@ -26,24 +26,24 @@ public class TechnicianServiceImpl implements TechnicianService {
 
     @Transactional
     @Override
-    public TechnicianDTO createTechnician(TechnicianRequestDTO technicianRequestDTO) {
+    public TechnicianResponseDTO createTechnician(TechnicianRequestDTO technicianRequestDTO) {
         technicianValidationService.validateUniqueTechnician(technicianRequestDTO);
         Technician savedTechnician = technicianRepository.save(modelMapper.map(technicianRequestDTO, Technician.class));
         log.info("Technician with id {} saved in data base", savedTechnician.getId());
 
-        return modelMapper.map(savedTechnician, TechnicianDTO.class);
+        return modelMapper.map(savedTechnician, TechnicianResponseDTO.class);
     }
 
     @Override
-    public List<TechnicianDTO> getAllTechnicians() {
+    public List<TechnicianResponseDTO> getAllTechnicians() {
 
         return technicianRepository.findAll().stream()
-                .map(technician -> modelMapper.map(technician, TechnicianDTO.class))
+                .map(technician -> modelMapper.map(technician, TechnicianResponseDTO.class))
                 .toList();
     }
 
     @Override
-    public TechnicianDTO updateTechnician(Long technicianId, TechnicianRequestDTO technicianRequestDTO) {
+    public TechnicianResponseDTO updateTechnician(Long technicianId, TechnicianRequestDTO technicianRequestDTO) {
         Technician technician = technicianValidationService.getValidTechnician(technicianId);
         technician.setTechnicianFirstName(technicianRequestDTO.getTechnicianFirstName());
         technician.setTechnicianLastName(technicianRequestDTO.getTechnicianLastName());
@@ -51,7 +51,7 @@ public class TechnicianServiceImpl implements TechnicianService {
 
         Technician savedTechnician = technicianRepository.save(technician);
         log.info("Technician {} : {} updated in data base. ", savedTechnician.getId(), savedTechnician.getTechnicianFirstName());
-        return modelMapper.map(savedTechnician, TechnicianDTO.class);
+        return modelMapper.map(savedTechnician, TechnicianResponseDTO.class);
     }
 
     @Override

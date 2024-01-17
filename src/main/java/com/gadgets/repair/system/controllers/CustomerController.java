@@ -1,6 +1,6 @@
 package com.gadgets.repair.system.controllers;
 
-import com.gadgets.repair.system.models.dtos.CustomerDTO;
+import com.gadgets.repair.system.models.dtos.responses.CustomerResponseDTO;
 import com.gadgets.repair.system.models.dtos.requests.CustomerRequestDTO;
 import com.gadgets.repair.system.services.customer.CustomerService;
 import jakarta.validation.Valid;
@@ -21,17 +21,17 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerRequestDTO customerRequestDTO) {
+    public ResponseEntity<CustomerResponseDTO> createCustomer(@Valid @RequestBody CustomerRequestDTO customerRequestDTO) {
         return ResponseEntity.ok(customerService.createCustomer(customerRequestDTO));
     }
 
     @GetMapping
-    public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
+    public ResponseEntity<List<CustomerResponseDTO>> getAllCustomers() {
         return ResponseEntity.ok(customerService.getAllCustomers());
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable Long customerId, @Valid @RequestBody CustomerRequestDTO customerRequestDTO) {
+    public ResponseEntity<CustomerResponseDTO> updateCustomer(@PathVariable Long customerId, @Valid @RequestBody CustomerRequestDTO customerRequestDTO) {
         return ResponseEntity.ok(customerService.updateCustomer(customerId, customerRequestDTO));
     }
 

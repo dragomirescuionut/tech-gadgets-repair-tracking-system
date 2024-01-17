@@ -1,6 +1,6 @@
 package com.gadgets.repair.system.controllers;
 
-import com.gadgets.repair.system.models.dtos.TechnicianDTO;
+import com.gadgets.repair.system.models.dtos.responses.TechnicianResponseDTO;
 import com.gadgets.repair.system.models.dtos.requests.TechnicianRequestDTO;
 import com.gadgets.repair.system.services.technician.TechnicianService;
 import jakarta.validation.Valid;
@@ -22,17 +22,17 @@ public class TechnicianController {
     }
 
     @PostMapping
-    public ResponseEntity<TechnicianDTO> createTechnician(@RequestBody TechnicianRequestDTO technicianRequestDTO) {
+    public ResponseEntity<TechnicianResponseDTO> createTechnician(@RequestBody TechnicianRequestDTO technicianRequestDTO) {
         return ResponseEntity.ok(technicianService.createTechnician(technicianRequestDTO));
     }
 
     @GetMapping
-    public ResponseEntity<List<TechnicianDTO>> getAllTechnicians() {
+    public ResponseEntity<List<TechnicianResponseDTO>> getAllTechnicians() {
         return ResponseEntity.ok(technicianService.getAllTechnicians());
     }
 
     @PutMapping("/{technicianId}")
-    public ResponseEntity<TechnicianDTO> updateTechnician(@PathVariable Long technicianId, @Valid @RequestBody TechnicianRequestDTO technicianRequestDTO) {
+    public ResponseEntity<TechnicianResponseDTO> updateTechnician(@PathVariable Long technicianId, @Valid @RequestBody TechnicianRequestDTO technicianRequestDTO) {
         return ResponseEntity.ok(technicianService.updateTechnician(technicianId, technicianRequestDTO));
     }
     @DeleteMapping("/{technicianId}")
