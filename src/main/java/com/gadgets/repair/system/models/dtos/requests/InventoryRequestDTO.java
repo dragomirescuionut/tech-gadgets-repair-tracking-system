@@ -1,4 +1,4 @@
-package com.gadgets.repair.system.models.requests;
+package com.gadgets.repair.system.models.dtos.requests;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

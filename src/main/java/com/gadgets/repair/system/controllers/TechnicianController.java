@@ -1,7 +1,7 @@
 package com.gadgets.repair.system.controllers;
 
 import com.gadgets.repair.system.models.dtos.TechnicianDTO;
-import com.gadgets.repair.system.models.requests.TechnicianRequestDTO;
+import com.gadgets.repair.system.models.dtos.requests.TechnicianRequestDTO;
 import com.gadgets.repair.system.services.technician.TechnicianService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
