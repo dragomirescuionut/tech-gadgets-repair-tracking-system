@@ -22,7 +22,7 @@ public class TechnicianController {
     }
 
     @PostMapping
-    public ResponseEntity<TechnicianResponseDTO> createTechnician(@RequestBody TechnicianRequestDTO technicianRequestDTO) {
+    public ResponseEntity<TechnicianResponseDTO> createTechnician(@Valid @RequestBody TechnicianRequestDTO technicianRequestDTO) {
         return ResponseEntity.ok(technicianService.createTechnician(technicianRequestDTO));
     }
 
@@ -40,4 +40,5 @@ public class TechnicianController {
         technicianService.deleteTechnicianById(technicianId);
         return ResponseEntity.ok().build();
     }
+
 }
