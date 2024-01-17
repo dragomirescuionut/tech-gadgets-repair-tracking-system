@@ -7,6 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CustomerValidationService {
     void validateUniqueCustomer(CustomerRequestDTO customerRequestDTO);
-
     Customer getValidCustomer(Long customerId);
 }
