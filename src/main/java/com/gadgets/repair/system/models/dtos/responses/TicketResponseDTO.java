@@ -1,4 +1,4 @@
-package com.gadgets.repair.system.models.dtos;
+package com.gadgets.repair.system.models.dtos.responses;
 
 import com.gadgets.repair.system.models.DeviceType;
 import com.gadgets.repair.system.models.Status;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class TicketDTO {
+public class TicketResponseDTO {
     private Long id;
     private DeviceType deviceType;
     private String issueDescription;

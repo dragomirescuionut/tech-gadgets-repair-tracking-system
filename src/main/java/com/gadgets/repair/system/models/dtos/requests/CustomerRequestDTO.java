@@ -1,6 +1,6 @@
 package com.gadgets.repair.system.models.dtos.requests;
 
-import com.gadgets.repair.system.models.entities.Ticket;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
@@ -8,23 +8,24 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.List;
+
 
 @Data
 public class CustomerRequestDTO {
 
-    @NotBlank(message = "Invalid first name")
+    @NotBlank(message = "First name is required!")
+    @Size(min =3 , max = 50, message = "First name must be between 3 and 50 characters!")
     private String firstName;
-    @NotBlank(message = "Invalid last name")
+    @NotBlank(message = "Last name is required")
+    @Size(min =3 , max = 50, message = "Last name must be between 3 and 50 characters!")
     private String lastName;
-    @Size(min = 5, max = 25, message
-            = "User name must be between 10 and 25 characters")
-    @NotBlank(message = "Invalid user name")
-    private String userName;
-    @NotBlank(message = "Invalid email")
-    @Email(message = "Invalid email")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email!")
     private String email;
-    @NotBlank(message = "Invalid address")
+    @NotBlank(message = "Phone number is required!")
+    @Size(min = 10, max = 15, message = "Phone number length must be between 10 and 15 characters!")
+    private String phoneNumber;
+    @NotBlank(message = "Address is required!")
     private String address;
     @Past(message = "Invalid date of birth!")
     private LocalDate dateOfBirth;

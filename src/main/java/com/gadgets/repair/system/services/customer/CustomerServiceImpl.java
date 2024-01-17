@@ -1,6 +1,6 @@
 package com.gadgets.repair.system.services.customer;
 
-import com.gadgets.repair.system.models.dtos.CustomerDTO;
+import com.gadgets.repair.system.models.dtos.responses.CustomerResponseDTO;
 import com.gadgets.repair.system.models.entities.Customer;
 import com.gadgets.repair.system.models.dtos.requests.CustomerRequestDTO;
 import com.gadgets.repair.system.repositories.CustomerRepository;
@@ -26,23 +26,23 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Transactional
     @Override
-    public CustomerDTO createCustomer(CustomerRequestDTO customerRequestDTO) {
+    public CustomerResponseDTO createCustomer(CustomerRequestDTO customerRequestDTO) {
         customerValidationService.validateUniqueCustomer(customerRequestDTO);
         Customer savedCustomer = customerRepository.save(modelMapper.map(customerRequestDTO, Customer.class));
         log.info("Customer with id {} saved in data base", savedCustomer.getId());
 
-        return modelMapper.map(savedCustomer, CustomerDTO.class);
+        return modelMapper.map(savedCustomer, CustomerResponseDTO.class);
     }
 
     @Override
-    public List<CustomerDTO> getAllCustomers() {
+    public List<CustomerResponseDTO> getAllCustomers() {
         return customerRepository.findAll().stream()
-                .map(customer -> modelMapper.map(customer, CustomerDTO.class))
+                .map(customer -> modelMapper.map(customer, CustomerResponseDTO.class))
                 .toList();
     }
 
     @Override
-    public CustomerDTO updateCustomer(Long customerId, CustomerRequestDTO customerRequestDTO) {
+    public CustomerResponseDTO updateCustomer(Long customerId, CustomerRequestDTO customerRequestDTO) {
         Customer customer = customerValidationService.getValidCustomer(customerId);
         customer.setFirstName(customerRequestDTO.getFirstName());
         customer.setLastName(customerRequestDTO.getLastName());
@@ -50,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         Customer savedCustomer = customerRepository.save(customer);
         log.info("Customer {} : {} updated in data base. ", savedCustomer.getId(), savedCustomer.getFirstName());
-        return modelMapper.map(savedCustomer, CustomerDTO.class);
+        return modelMapper.map(savedCustomer, CustomerResponseDTO.class);
     }
 
     @Override
