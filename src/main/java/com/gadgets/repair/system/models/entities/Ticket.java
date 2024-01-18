@@ -13,7 +13,7 @@ import java.util.List;
 @Table
 public class Ticket {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "device_type")
     private DeviceType deviceType;
@@ -22,18 +22,23 @@ public class Ticket {
     @Column(name = "status")
     private Status status;
     @Column(name = "created_at")
-    private LocalDate created_at;
+    private LocalDate createdAt;
     @Column(name = "estimated_completion_date")
     private LocalDate estimatedCompletionDate;
     @Column(name = "completion_date")
     private LocalDate completionDate;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "technician_id")
+    private Technician technician;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "tickets_technicians",
+    @JoinTable(name = "tickets_inventories",
             joinColumns = @JoinColumn(name = "ticket_id"),
-            inverseJoinColumns = @JoinColumn(name = "technician_id")
+            inverseJoinColumns = @JoinColumn(name = "inventory_id")
     )
-    private List<Technician> technicianList;
+    private List<Inventory> inventoryList;
+
+
 }
