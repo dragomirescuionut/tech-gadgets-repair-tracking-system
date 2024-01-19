@@ -18,6 +18,6 @@ public class Technician {
     private String technicianLastName;
     @Column(name = "technician_email")
     private String technicianEmail;
-    @ManyToMany(mappedBy = "technicianList")
-    private List<Ticket> ticketList;
+    @OneToMany(mappedBy = "technician")
+    private List<Ticket> technicianList;
 }

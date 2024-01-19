@@ -7,6 +7,7 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -17,11 +18,11 @@ public class TicketRequestDTO {
     @Size(min = 10, max = 300, message = "Issue description must be between 10 and 300 characters!")
     private String issueDescription;
     private Status status;
-    private LocalDate createdAt = LocalDate.now();
+    private LocalDate createdAt;
     @FutureOrPresent(message = "Invalid estimated completion date!")
     private LocalDate estimatedCompletionDate;
     private LocalDate completionDate;
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email!")
-    private String customerEmail;
+    @NotNull(message = "Customer id is required!")
+    private Long customerId;
+    private Long technicianId;
 }

@@ -1,18 +1,14 @@
-package com.gadgets.repair.system.models.dtos.responses;
+package com.gadgets.repair.system.models.dtos;
 
 import com.gadgets.repair.system.models.entities.Ticket;
-import jakarta.persistence.*;
-import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-@Data
-public class TechnicianResponseDTO {
 
+public class TechnicianDTO {
     private Long id;
     private String technicianFirstName;
     private String technicianLastName;
     private String technicianEmail;
-    private List<Ticket> technicianTickets = new ArrayList<>();
 
 }
