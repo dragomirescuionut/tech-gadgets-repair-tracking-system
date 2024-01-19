@@ -22,6 +22,6 @@ public class TicketResponseDTO {
     private LocalDate createdAt;
     private LocalDate estimatedCompletionDate;
     private LocalDate completionDate;
-    private CustomerDTO customerDTO; //use CustomerDTO
-    private List<TechnicianDTO> technicianDTOList = new ArrayList<>(); //use TechnicianDTO
+    private CustomerDTO customerDTO;
+    private TechnicianDTO technicianDTO;
 }

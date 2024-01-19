@@ -14,6 +14,7 @@ import java.util.List;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
     @Column(name = "device_type")
     private DeviceType deviceType;
@@ -39,6 +40,4 @@ public class Ticket {
             inverseJoinColumns = @JoinColumn(name = "inventory_id")
     )
     private List<Inventory> inventoryList;
-
-
 }
