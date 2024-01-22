@@ -1,4 +1,4 @@
-package com.gadgets.repair.system.models;
+package com.gadgets.repair.system.utils;
 
 public enum Manufacturer {
     ASUS,
