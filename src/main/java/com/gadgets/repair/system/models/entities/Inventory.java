@@ -1,6 +1,6 @@
 package com.gadgets.repair.system.models.entities;
 
-import com.gadgets.repair.system.models.Manufacturer;
+import com.gadgets.repair.system.utils.Manufacturer;
 import jakarta.persistence.*;
 import lombok.Data;
 

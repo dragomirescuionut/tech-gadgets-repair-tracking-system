@@ -1,6 +1,6 @@
 package com.gadgets.repair.system.models.dtos.requests;
 
-import com.gadgets.repair.system.models.Manufacturer;
+import com.gadgets.repair.system.utils.Manufacturer;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -13,5 +13,4 @@ public class InventoryRequestDTO {
     private String componentName;
     @NotNull(message = "Invalid component quantity!")
     private Integer availableComponentQuantity;
-
 }

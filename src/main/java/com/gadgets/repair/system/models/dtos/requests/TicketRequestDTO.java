@@ -1,13 +1,12 @@
 package com.gadgets.repair.system.models.dtos.requests;
 
-import com.gadgets.repair.system.models.DeviceType;
-import com.gadgets.repair.system.models.Status;
+import com.gadgets.repair.system.utils.DeviceType;
+import com.gadgets.repair.system.utils.Status;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.List;
 
 
 @Data

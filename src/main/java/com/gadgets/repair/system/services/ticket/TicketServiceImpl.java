@@ -21,14 +21,12 @@ import java.time.LocalDate;
 @Service
 public class TicketServiceImpl implements TicketService{
     private final ModelMapper modelMapper;
-    private final CustomerRepository customerRepository;
     private final TicketValidationService ticketValidationService;
 
     private final TicketRepository ticketRepository;
 
-    public TicketServiceImpl(ModelMapper modelMapper, ModelMapper ticketModelMapper, CustomerRepository customerRepository, TicketValidationService ticketValidationService, TicketRepository ticketRepository) {
+    public TicketServiceImpl(ModelMapper modelMapper, TicketValidationService ticketValidationService, TicketRepository ticketRepository) {
         this.modelMapper = modelMapper;
-        this.customerRepository = customerRepository;
         this.ticketValidationService = ticketValidationService;
         this.ticketRepository = ticketRepository;
     }
@@ -49,8 +47,8 @@ public class TicketServiceImpl implements TicketService{
         CustomerDTO customerDTO = modelMapper.map(customer,CustomerDTO.class);
         TechnicianDTO technicianDTO = modelMapper.map(technician, TechnicianDTO.class);
         TicketResponseDTO ticketResponseDTO = modelMapper.map(savedTicket,TicketResponseDTO.class);
-        ticketResponseDTO.setCustomerDTO(customerDTO);
-        ticketResponseDTO.setTechnicianDTO(technicianDTO);
+        ticketResponseDTO.setCustomer(customerDTO);
+        ticketResponseDTO.setTechnician(technicianDTO);
 
         return ticketResponseDTO;
     }

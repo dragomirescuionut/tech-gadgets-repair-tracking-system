@@ -1,17 +1,12 @@
 package com.gadgets.repair.system.models.dtos.responses;
 
-import com.gadgets.repair.system.models.DeviceType;
-import com.gadgets.repair.system.models.Status;
+import com.gadgets.repair.system.utils.DeviceType;
+import com.gadgets.repair.system.utils.Status;
 import com.gadgets.repair.system.models.dtos.CustomerDTO;
 import com.gadgets.repair.system.models.dtos.TechnicianDTO;
-import com.gadgets.repair.system.models.entities.Customer;
-import com.gadgets.repair.system.models.entities.Technician;
 import lombok.Data;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 public class TicketResponseDTO {
@@ -22,6 +17,6 @@ public class TicketResponseDTO {
     private LocalDate createdAt;
     private LocalDate estimatedCompletionDate;
     private LocalDate completionDate;
-    private CustomerDTO customerDTO;
-    private TechnicianDTO technicianDTO;
+    private CustomerDTO customer;
+    private TechnicianDTO technician;
 }

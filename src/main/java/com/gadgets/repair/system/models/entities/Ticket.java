@@ -1,7 +1,7 @@
 package com.gadgets.repair.system.models.entities;
 
-import com.gadgets.repair.system.models.DeviceType;
-import com.gadgets.repair.system.models.Status;
+import com.gadgets.repair.system.utils.DeviceType;
+import com.gadgets.repair.system.utils.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
