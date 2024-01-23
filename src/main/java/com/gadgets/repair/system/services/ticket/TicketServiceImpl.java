@@ -9,6 +9,7 @@ import com.gadgets.repair.system.models.entities.Technician;
 import com.gadgets.repair.system.models.entities.Ticket;
 import com.gadgets.repair.system.repositories.CustomerRepository;
 import com.gadgets.repair.system.repositories.TicketRepository;
+import com.gadgets.repair.system.utils.DeviceType;
 import com.gadgets.repair.system.utils.Status;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,8 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -53,5 +56,13 @@ public class TicketServiceImpl implements TicketService{
         ticketResponseDTO.setTechnician(technicianDTO);
 
         return ticketResponseDTO;
+    }
+    @Override
+    public List<TicketResponseDTO> getFilteredTickets(Status status, DeviceType deviceType) {
+        List<Ticket> tickets = ticketRepository.findFilteredTickets(status,deviceType);
+        log.info("Number of tickets " + tickets.size());
+        return tickets.stream()
+                .map(ticket -> modelMapper.map(ticket, TicketResponseDTO.class))
+                .collect(Collectors.toList());
     }
 }

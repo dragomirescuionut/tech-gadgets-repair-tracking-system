@@ -11,11 +11,13 @@ public enum DeviceType {
     OTHER("other");
 
     private String deviceType;
-    private DeviceType(String deviceType){
+
+    private DeviceType(String deviceType) {
         this.deviceType = deviceType;
     }
+
     @JsonValue
-    public String getDeviceType(){
+    public String getDeviceType() {
         return deviceType;
     }
 }
