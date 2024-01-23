@@ -9,6 +9,7 @@ import com.gadgets.repair.system.models.entities.Technician;
 import com.gadgets.repair.system.models.entities.Ticket;
 import com.gadgets.repair.system.repositories.CustomerRepository;
 import com.gadgets.repair.system.repositories.TicketRepository;
+import com.gadgets.repair.system.utils.Status;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -37,6 +38,7 @@ public class TicketServiceImpl implements TicketService{
         Ticket ticket = modelMapper.map(ticketRequestDTO,Ticket.class);
         Customer customer = ticketValidationService.getValidCustomer(ticketRequestDTO.getCustomerId());
         Technician technician = ticketValidationService.getValidTechnician(ticketRequestDTO.getTechnicianId());
+        //Status.validateStatusCode(ticketRequestDTO.getStatus().toString());
         ticket.setCreatedAt(LocalDate.now());
         ticket.setCustomer(customer);
         ticket.setTechnician(technician);
