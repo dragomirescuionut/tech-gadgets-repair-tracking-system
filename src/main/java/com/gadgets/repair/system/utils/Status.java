@@ -1,11 +1,8 @@
 package com.gadgets.repair.system.utils;
 
 
-import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.gadgets.repair.system.exceptions.InvalidEnumValueException;
 
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Status {
     OPEN("open"),
