@@ -35,6 +35,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> customerNotFoundException(ResourceNotFoundException customerNotFoundException) {
         return new ResponseEntity<>(objectToString(Map.of("message", customerNotFoundException.getMessage())), NOT_FOUND);
     }
+    @ExceptionHandler(InvalidEnumValueException.class)
+    public ResponseEntity<String> invalidEnumValueException(InvalidEnumValueException invalidEnumValueException){
+        log.error("InvalidEnumValueException caught: {}", invalidEnumValueException.getMessage());
+        return new ResponseEntity<>(objectToString(Map.of("message", invalidEnumValueException.getMessage())), BAD_REQUEST);
+
+    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)

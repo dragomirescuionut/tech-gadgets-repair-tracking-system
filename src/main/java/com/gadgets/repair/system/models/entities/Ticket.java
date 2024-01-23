@@ -4,6 +4,7 @@ import com.gadgets.repair.system.utils.DeviceType;
 import com.gadgets.repair.system.utils.Status;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 @Entity(name = "tickets")
 @Table
+@Validated
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
