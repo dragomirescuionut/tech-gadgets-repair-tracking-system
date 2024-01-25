@@ -1,13 +1,19 @@
 package com.gadgets.repair.system.models.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
+@Data
 @Table(name = "customers")
 public class Customer {
     @Id
