@@ -13,12 +13,11 @@ import java.time.LocalDate;
 @Validated
 @Data
 public class TicketRequestDTO {
-    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+
     private DeviceType deviceType;
     @NotBlank(message = "Issue description is required!")
     @Size(min = 10, max = 300, message = "Issue description must be between 10 and 300 characters!")
     private String issueDescription;
-    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     private Status status;
     private LocalDate createdAt;
     @FutureOrPresent(message = "Invalid estimated completion date!")

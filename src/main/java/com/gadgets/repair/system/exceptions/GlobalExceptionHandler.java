@@ -20,25 +20,21 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-    private final ObjectMapper objectMapper;
-
-    public GlobalExceptionHandler(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
 
     @ExceptionHandler(DuplicateResourceException.class)
-    public ResponseEntity<String> duplicateCustomerException(DuplicateResourceException duplicateCustomerException) {
-        return new ResponseEntity<>(objectToString(Map.of("message", duplicateCustomerException.getMessage())), BAD_REQUEST);
+    public ResponseEntity<Map<String, String>> duplicateCustomerException(DuplicateResourceException duplicateCustomerException) {
+        return new ResponseEntity<>(Map.of("message", duplicateCustomerException.getMessage()), BAD_REQUEST);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<String> customerNotFoundException(ResourceNotFoundException customerNotFoundException) {
-        return new ResponseEntity<>(objectToString(Map.of("message", customerNotFoundException.getMessage())), NOT_FOUND);
+    public ResponseEntity<Map<String, String>> customerNotFoundException(ResourceNotFoundException customerNotFoundException) {
+        return new ResponseEntity<>(Map.of("message", customerNotFoundException.getMessage()), NOT_FOUND);
     }
+
     @ExceptionHandler(InvalidEnumValueException.class)
-    public ResponseEntity<String> invalidEnumValueException(InvalidEnumValueException invalidEnumValueException){
+    public ResponseEntity<Map<String, String>> invalidEnumValueException(InvalidEnumValueException invalidEnumValueException) {
         log.error("InvalidEnumValueException caught: {}", invalidEnumValueException.getMessage());
-        return new ResponseEntity<>(objectToString(Map.of("message", invalidEnumValueException.getMessage())), BAD_REQUEST);
+        return new ResponseEntity<>(Map.of("message", invalidEnumValueException.getMessage()), BAD_REQUEST);
 
     }
 
@@ -53,14 +49,5 @@ public class GlobalExceptionHandler {
             errors.put(fieldName, errorMessage);
         });
         return errors;
-    }
-
-    private String objectToString(Object response) {
-        try {
-            return objectMapper.writeValueAsString(response);
-        } catch (JsonProcessingException e) {
-            log.error("Error processing response to string.");
-            return "Internal error";
-        }
     }
 }
