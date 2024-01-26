@@ -2,6 +2,7 @@ package com.gadgets.repair.system.controllers;
 
 import com.gadgets.repair.system.models.dtos.requests.TicketRequestDTO;
 import com.gadgets.repair.system.models.dtos.responses.TicketResponseDTO;
+import com.gadgets.repair.system.models.entities.Ticket;
 import com.gadgets.repair.system.services.ticket.TicketServiceImpl;
 import com.gadgets.repair.system.utils.DeviceType;
 import com.gadgets.repair.system.utils.Status;
@@ -13,6 +14,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/api/tickets")
@@ -33,5 +35,10 @@ public class TicketController {
     public ResponseEntity<List<TicketResponseDTO>> getFilteredTickets(@RequestParam("status") Status status,
                                                                       @RequestParam("deviceType") DeviceType deviceType) {
         return ResponseEntity.ok(ticketService.getFilteredTickets(status, deviceType));
+    }
+
+    @PatchMapping("/{ticketId}")
+    public ResponseEntity<TicketResponseDTO> updateTicketFields(@PathVariable Long ticketId, @RequestBody TicketRequestDTO ticketRequestDTO) {
+        return ResponseEntity.ok(ticketService.updateTicket(ticketId, ticketRequestDTO));
     }
 }

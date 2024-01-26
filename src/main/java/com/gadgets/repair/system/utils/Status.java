@@ -27,6 +27,6 @@ public enum Status {
                 return status;
             }
         }
-        throw new InvalidEnumValueException("Invalid status value! ");
+        throw new InvalidEnumValueException("Invalid status value!");
     }
 }
