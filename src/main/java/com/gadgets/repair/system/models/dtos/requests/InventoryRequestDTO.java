@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class InventoryRequestDTO {
-    @NotBlank(message = "Invalid manufacturer!")
+    private Long id;
     private Manufacturer manufacturer;
     @NotBlank(message = "Invalid component name!")
     private String componentName;

@@ -1,4 +1,4 @@
-package com.gadgets.repair.system.repositories;
+package com.gadgets.repair.system.repositories.customer;
 
 import com.gadgets.repair.system.models.entities.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

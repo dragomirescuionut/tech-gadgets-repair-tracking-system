@@ -3,9 +3,9 @@ package com.gadgets.repair.system.services.ticket;
 import com.gadgets.repair.system.exceptions.ResourceNotFoundException;
 import com.gadgets.repair.system.models.entities.Customer;
 import com.gadgets.repair.system.models.entities.Technician;
-import com.gadgets.repair.system.repositories.CustomerRepository;
-import com.gadgets.repair.system.repositories.TechnicianRepository;
-import com.gadgets.repair.system.repositories.TicketRepository;
+import com.gadgets.repair.system.repositories.customer.CustomerRepository;
+import com.gadgets.repair.system.repositories.technician.TechnicianRepository;
+import com.gadgets.repair.system.repositories.ticket.TicketRepository;
 import org.springframework.stereotype.Service;
 
 @Service

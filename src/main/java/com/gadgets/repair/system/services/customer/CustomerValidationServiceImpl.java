@@ -4,7 +4,7 @@ import com.gadgets.repair.system.exceptions.ResourceNotFoundException;
 import com.gadgets.repair.system.exceptions.DuplicateResourceException;
 import com.gadgets.repair.system.models.entities.Customer;
 import com.gadgets.repair.system.models.dtos.requests.CustomerRequestDTO;
-import com.gadgets.repair.system.repositories.CustomerRepository;
+import com.gadgets.repair.system.repositories.customer.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 @Service

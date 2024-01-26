@@ -1,6 +1,8 @@
 package com.gadgets.repair.system.models.dtos.responses;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gadgets.repair.system.models.dtos.InventoryDTO;
+import com.gadgets.repair.system.models.entities.Inventory;
 import com.gadgets.repair.system.utils.DeviceType;
 import com.gadgets.repair.system.utils.Status;
 import com.gadgets.repair.system.models.dtos.CustomerDTO;
@@ -8,6 +10,7 @@ import com.gadgets.repair.system.models.dtos.TechnicianDTO;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class TicketResponseDTO {
@@ -20,4 +23,5 @@ public class TicketResponseDTO {
     private LocalDate completionDate;
     private CustomerDTO customer;
     private TechnicianDTO technician;
+    private List<InventoryDTO> inventoryList;
 }
