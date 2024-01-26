@@ -1,4 +1,4 @@
-package com.gadgets.repair.system.repositories;
+package com.gadgets.repair.system.repositories.technician;
 
 import com.gadgets.repair.system.models.entities.Technician;
 import org.springframework.data.jpa.repository.JpaRepository;

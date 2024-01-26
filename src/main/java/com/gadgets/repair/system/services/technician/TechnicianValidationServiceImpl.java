@@ -4,12 +4,12 @@ import com.gadgets.repair.system.exceptions.DuplicateResourceException;
 import com.gadgets.repair.system.exceptions.ResourceNotFoundException;
 import com.gadgets.repair.system.models.entities.Technician;
 import com.gadgets.repair.system.models.dtos.requests.TechnicianRequestDTO;
-import com.gadgets.repair.system.repositories.TechnicianRepository;
+import com.gadgets.repair.system.repositories.technician.TechnicianRepository;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class TechnicianValidationServiceImpl implements TechnicianValidationService{
+public class TechnicianValidationServiceImpl implements TechnicianValidationService {
     private final TechnicianRepository technicianRepository;
 
     public TechnicianValidationServiceImpl(TechnicianRepository technicianRepository) {

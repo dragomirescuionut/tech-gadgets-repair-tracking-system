@@ -1,6 +1,8 @@
 package com.gadgets.repair.system.models.dtos.requests;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.gadgets.repair.system.models.dtos.InventoryDTO;
+import com.gadgets.repair.system.models.entities.Inventory;
 import com.gadgets.repair.system.utils.DeviceType;
 import com.gadgets.repair.system.utils.Status;
 
@@ -9,6 +11,7 @@ import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Validated
 @Data
@@ -26,4 +29,5 @@ public class TicketRequestDTO {
     @NotNull(message = "Customer id is required!")
     private Long customerId;
     private Long technicianId;
+    private List<InventoryDTO> inventoryList;
 }

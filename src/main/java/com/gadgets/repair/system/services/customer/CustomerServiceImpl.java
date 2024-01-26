@@ -3,7 +3,7 @@ package com.gadgets.repair.system.services.customer;
 import com.gadgets.repair.system.models.dtos.responses.CustomerResponseDTO;
 import com.gadgets.repair.system.models.entities.Customer;
 import com.gadgets.repair.system.models.dtos.requests.CustomerRequestDTO;
-import com.gadgets.repair.system.repositories.CustomerRepository;
+import com.gadgets.repair.system.repositories.customer.CustomerRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
