@@ -1,4 +1,4 @@
-package com.gadgets.repair.system.repositories;
+package com.gadgets.repair.system.repositories.ticket;
 
 import com.gadgets.repair.system.models.entities.Ticket;
 import com.gadgets.repair.system.utils.DeviceType;
