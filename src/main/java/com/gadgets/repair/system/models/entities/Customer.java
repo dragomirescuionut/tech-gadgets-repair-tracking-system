@@ -1,5 +1,6 @@
 package com.gadgets.repair.system.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +32,7 @@ public class Customer {
     private String address;
     @Column(name="date_of_birth")
     private LocalDate dateOfBirth;
+    @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private List<Ticket> customerTickets;
 }

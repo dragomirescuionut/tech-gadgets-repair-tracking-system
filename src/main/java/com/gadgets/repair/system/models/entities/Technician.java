@@ -1,5 +1,6 @@
 package com.gadgets.repair.system.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class Technician {
     private String technicianLastName;
     @Column(name = "technician_email")
     private String technicianEmail;
+    @JsonIgnore
     @OneToMany(mappedBy = "technician")
     private List<Ticket> technicianList;
 }

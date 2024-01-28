@@ -1,5 +1,6 @@
 package com.gadgets.repair.system.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gadgets.repair.system.utils.DeviceType;
 import com.gadgets.repair.system.utils.Status;
 import jakarta.persistence.*;
@@ -36,6 +37,7 @@ public class Ticket {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "technician_id")
     private Technician technician;
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(name = "tickets_inventories",
             joinColumns = @JoinColumn(name = "ticket_id"),

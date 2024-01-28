@@ -4,9 +4,7 @@ import com.gadgets.repair.system.exceptions.ResourceNotFoundException;
 import com.gadgets.repair.system.models.dtos.CustomerDTO;
 import com.gadgets.repair.system.models.dtos.InventoryDTO;
 import com.gadgets.repair.system.models.dtos.TechnicianDTO;
-import com.gadgets.repair.system.models.dtos.requests.InventoryRequestDTO;
 import com.gadgets.repair.system.models.dtos.requests.TicketRequestDTO;
-import com.gadgets.repair.system.models.dtos.responses.InventoryResponseDTO;
 import com.gadgets.repair.system.models.dtos.responses.TicketResponseDTO;
 import com.gadgets.repair.system.models.entities.Customer;
 import com.gadgets.repair.system.models.entities.Inventory;
@@ -14,6 +12,7 @@ import com.gadgets.repair.system.models.entities.Technician;
 import com.gadgets.repair.system.models.entities.Ticket;
 import com.gadgets.repair.system.repositories.inventory.InventoryRepository;
 import com.gadgets.repair.system.repositories.ticket.TicketRepository;
+import com.gadgets.repair.system.services.email.EmailService;
 import com.gadgets.repair.system.utils.DeviceType;
 import com.gadgets.repair.system.utils.Status;
 import jakarta.transaction.Transactional;
@@ -34,12 +33,14 @@ public class TicketServiceImpl implements TicketService {
 
     private final TicketRepository ticketRepository;
     private final InventoryRepository inventoryRepository;
+    private final EmailService emailService;
 
-    public TicketServiceImpl(ModelMapper modelMapper, TicketValidationService ticketValidationService, TicketRepository ticketRepository, InventoryRepository inventoryRepository) {
+    public TicketServiceImpl(ModelMapper modelMapper, TicketValidationService ticketValidationService, TicketRepository ticketRepository, InventoryRepository inventoryRepository, EmailService emailService) {
         this.modelMapper = modelMapper;
         this.ticketValidationService = ticketValidationService;
         this.ticketRepository = ticketRepository;
         this.inventoryRepository = inventoryRepository;
+        this.emailService = emailService;
     }
 
     @Transactional
@@ -63,6 +64,7 @@ public class TicketServiceImpl implements TicketService {
         TicketResponseDTO ticketResponseDTO = modelMapper.map(savedTicket, TicketResponseDTO.class);
         ticketResponseDTO.setCustomer(customerDTO);
         ticketResponseDTO.setTechnician(technicianDTO);
+        emailService.sendConfirmationEmail(customer.getEmail(),customer.getFirstName(),customer.getLastName(),ticket.getId(),ticket.getEstimatedCompletionDate(), technicianDTO.getTechnicianEmail());
 
         return ticketResponseDTO;
     }
@@ -89,6 +91,7 @@ public class TicketServiceImpl implements TicketService {
             ticket.setStatus(ticketRequestDTO.getStatus());
             if (ticketRequestDTO.getStatus() == Status.COMPLETED) {
                 ticket.setCompletionDate(LocalDate.now());
+                emailService.sendCompletionEmail(ticket.getCustomer().getEmail(),ticket.getCustomer().getFirstName(),ticket.getCustomer().getLastName(),ticketId);
             }
         }
         if (ticketRequestDTO.getEstimatedCompletionDate() != null) {
