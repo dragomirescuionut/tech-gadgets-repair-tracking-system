@@ -31,9 +31,11 @@ public class Ticket {
     private LocalDate estimatedCompletionDate;
     @Column(name = "completion_date")
     private LocalDate completionDate;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "technician_id")
     private Technician technician;
